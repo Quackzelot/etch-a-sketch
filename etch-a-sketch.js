@@ -1,15 +1,40 @@
 const container = document.querySelector("#container");
-for (let i = 0; i < 16; i++) {
-  for (let j = 0; j < 16; j++) {
+
+function etch_a_sketch(number) {
+  for (let i = 1; i <= number * number; i++) {
+    size = 1000 / number;
     const div = document.createElement("div");
+    div.style = "background-color: black";
+    div.style.height = size + "px";
+    div.style.width = size + "px";
     div.classList.add("sketch");
     container.appendChild(div);
   }
 }
 
-const sketches = document.querySelectorAll(".sketch");
-sketches.forEach(sketch => {
+function draw() {
+  const sketches = document.querySelectorAll(".sketch");
+  sketches.forEach((sketch) => {
     sketch.addEventListener("mouseenter", () => {
-        sketch.style = "background-color:lime";
+      sketch.style.backgroundColor = "lime";
     });
+  });
+}
+
+const new_sketch = document.querySelector("#new_sketch");
+
+new_sketch.addEventListener("click", () => {
+  let choice;
+  while (choice <= 0 || choice > 100 || isNaN(choice) == true) {
+    choice = prompt("How many squares per side ? (Min: 1, Max: 100)");
+    if (choice === null || choice === "") {
+        break;
+    }
+    choice = parseInt(choice);
+  }
+  document.querySelectorAll(".sketch").forEach((e) => e.remove());
+  document.querySelectorAll(".new_line").forEach((e) => e.remove());
+  choice = parseInt(choice);
+  etch_a_sketch(choice);
+  draw();
 });
