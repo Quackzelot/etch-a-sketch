@@ -2,7 +2,7 @@ const container = document.querySelector("#container");
 
 function etch_a_sketch(number) {
   for (let i = 1; i <= number * number; i++) {
-    size = 1000 / number;
+    size = 720 / number;
     const div = document.createElement("div");
     div.style = "background-color: black";
     div.style.height = size + "px";
@@ -12,11 +12,19 @@ function etch_a_sketch(number) {
   }
 }
 
+function getRandomRGB() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  return "rgb(" + r + "," + g + "," + b + ")";
+}
+
 function draw() {
   const sketches = document.querySelectorAll(".sketch");
   sketches.forEach((sketch) => {
     sketch.addEventListener("mouseenter", () => {
-      sketch.style.backgroundColor = "lime";
+      let random = Math.random
+      sketch.style.backgroundColor = getRandomRGB();
     });
   });
 }
