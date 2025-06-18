@@ -7,8 +7,8 @@ function etch_a_sketch(number) {
   }
   for (let i = 1; i <= number * number; i++) {
     size = containerSize / number;
-    container.style.width = containerSize + 2 + "px";
-    container.style.height = containerSize + 2 + "px";
+    container.style.width = containerSize + "px";
+    container.style.height = containerSize + "px";
     const div = document.createElement("div");
     div.style = "background-color: black";
     div.style.height = size + "px";

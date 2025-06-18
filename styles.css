@@ -22,8 +22,7 @@ button {
 #container {
     display: flex;
     flex-wrap: wrap;
-    height: 702px;
-    width: 702px;
-    border: 1px solid black;
+    height: 700px;
+    width: 700px;
     background-color: lightgray;
 }
