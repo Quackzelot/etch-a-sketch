@@ -1,8 +1,14 @@
 const container = document.querySelector("#container");
 
 function etch_a_sketch(number) {
+  let containerSize = 700;
+  while (containerSize % number != 0) {
+    containerSize = containerSize + 1;
+  }
   for (let i = 1; i <= number * number; i++) {
-    size = 720 / number;
+    size = containerSize / number;
+    container.style.width = containerSize + 2 + "px";
+    container.style.height = containerSize + 2 + "px";
     const div = document.createElement("div");
     div.style = "background-color: black";
     div.style.height = size + "px";
@@ -23,7 +29,7 @@ function draw() {
   const sketches = document.querySelectorAll(".sketch");
   sketches.forEach((sketch) => {
     sketch.addEventListener("mouseenter", () => {
-      let random = Math.random
+      let random = Math.random;
       sketch.style.backgroundColor = getRandomRGB();
     });
   });
@@ -36,7 +42,7 @@ new_sketch.addEventListener("click", () => {
   while (choice <= 0 || choice > 100 || isNaN(choice) == true) {
     choice = prompt("How many squares per side ? (Min: 1, Max: 100)");
     if (choice === null || choice === "") {
-        break;
+      break;
     }
     choice = parseInt(choice);
   }
